@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Hillfort</string>
+    <string name="hint_hillfortName">Hillfort Name</string>
+    <string name="hint_hillfortDescription">Hillfort Description (multi-line, max 200 characters)</string>
+    <string name="menu_add_hillfort">Add</string>
+    <string name="menu_delete_hillfort">Delete</string>
+    <string name="menu_cancel_hillfort">Cancel</string>
+    <string name="button_addHillfort">Add Hillfort</string>
+    <string name="button_editHillfort">Update Hillfort</string>
+    <string name="button_addImage">Add Image</string>
+    <string name="button_setLocation">Set Location</string>
 </resources>
