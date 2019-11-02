@@ -10,16 +10,15 @@ import org.wit.hillfort.helpers.read
 import org.wit.hillfort.helpers.write
 import java.util.*
 
-val JSON_FILE = "hillforts.json"
-val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
-val listType = object : TypeToken<java.util.ArrayList<HillfortModel>>() {}.type
-
 fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
 class HillfortJSONStore : HillfortStore, AnkoLogger {
 
+    val JSON_FILE = "hillforts.json"
+    val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
+    val listType = object : TypeToken<java.util.ArrayList<HillfortModel>>() {}.type
     val context: Context
     var hillforts = mutableListOf<HillfortModel>()
 

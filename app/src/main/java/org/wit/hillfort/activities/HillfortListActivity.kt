@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
@@ -26,6 +27,12 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
         recyclerView.adapter = HillfortAdapter(placemarks, this)
         // instruct the recyclerView's adapter that the model has been updated
         recyclerView.adapter?.notifyDataSetChanged()
+    }
+
+    private fun goToLoginActivity() {
+        // go to LoginActivity and dismiss the current view
+        startActivity<LoginActivity>()
+        finish()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +61,8 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
         when (item?.itemId) {
             // if the event is item_add, it starts the HillfortActivity
             R.id.item_add -> startActivityForResult<HillfortActivity>(0)
+            // if the event is item_logout, it should go to LoginActivity and dismiss the current view
+            R.id.item_logout -> goToLoginActivity()
         }
         return super.onOptionsItemSelected(item)
     }

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
@@ -23,6 +24,12 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     val LOCATION_REQUEST = 2
     var hillfort = HillfortModel()
     lateinit var app: MainApp
+
+    private fun goToLoginActivity() {
+        // go to LoginActivity and dismiss the current view
+        startActivity<LoginActivity>()
+        finish()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,6 +110,8 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
                 app.hillforts.delete(hillfort.copy())
                 finish()
             }
+            // if the event is item_logout, it should go to LoginActivity and dismiss the current view
+            R.id.item_logout -> goToLoginActivity()
         }
         return super.onOptionsItemSelected(item)
     }

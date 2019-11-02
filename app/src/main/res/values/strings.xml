@@ -2,16 +2,26 @@
     <string name="app_name">Hillfort</string>
     <string name="hint_hillfortName">Hillfort Name</string>
     <string name="hint_hillfortDescription">Hillfort Description (max 100 characters)</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
     <string name="menu_addHillfort">Add</string>
     <string name="menu_deleteHillfort">Delete</string>
     <string name="menu_cancelHillfort">Cancel</string>
-    <string name="toolbar_hilforts">My Hillforts</string>
+    <string name="menu_logoutUser">Logout</string>
+    <string name="toolbar_hilforts">Registered Hillforts</string>
+    <string name="toolbar_login">Welcome to Hillforts</string>
     <string name="button_addHillfort">Add Hillfort</string>
     <string name="button_editHillfort">Save Hillfort</string>
     <string name="button_addImage">Add Image</string>
     <string name="button_changeImage">Change Image</string>
     <string name="button_setLocation">Set Location</string>
+    <string name="button_authenticate">Sign in or Register</string>
     <string name="select_HillfortImage">Select Hillfort Image</string>
     <string name="toast_enterHillfordName">Please enter a Hillfort Name</string>
+    <string name="toast_enterLoginDetails">Please enter a valid Email and Password</string>
+    <string name="toast_InvalidEmail">Please enter a valid Email address</string>
+    <string name="toast_InvalidPassword">Invalid Password, Please try again</string>
+    <string name="toast_UserSingedUp">Registration successful</string>
+    <string name="toast_UserLoggedIn">Login successful</string>
     <string name="title_activity_maps">Map</string>
 </resources>

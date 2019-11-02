@@ -25,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun goToLoginActivity() {
         // go to LoginActivity and dismiss the current view
-        startActivity<HillfortListActivity>()
+        startActivity<LoginActivity>()
         finish()
     }
 }
