@@ -62,8 +62,9 @@
                     android:layout_margin="8dp"
                     android:gravity="start|top"
                     android:hint="@string/hint_hillfortDescription"
-                    android:inputType="textMultiLine"
+                    android:inputType="text"
                     android:maxLength="100"
+                    android:maxLines="2"
                     android:padding="8dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
@@ -108,7 +109,7 @@
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:stateListAnimator="@null"
-                    android:text="@string/button_editHillfort"
+                    android:text="@string/button_addHillfort"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 

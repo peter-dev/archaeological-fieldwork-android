@@ -7,17 +7,18 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
+import org.wit.hillfort.R
 import java.io.IOException
 
 // helper function to show an image picker dialog
-//fun showImagePicker(parent: Activity, id: Int) {
-//    val intent = Intent()
-//    intent.type = "image/*"
-//    intent.action = Intent.ACTION_OPEN_DOCUMENT
-//    intent.addCategory(Intent.CATEGORY_OPENABLE)
-//    val chooser = Intent.createChooser(intent, R.string.select_placemark_image.toString())
-//    parent.startActivityForResult(chooser, id)
-//}
+fun showImagePicker(parent: Activity, id: Int) {
+    val intent = Intent()
+    intent.type = "image/*"
+    intent.action = Intent.ACTION_OPEN_DOCUMENT
+    intent.addCategory(Intent.CATEGORY_OPENABLE)
+    val chooser = Intent.createChooser(intent, R.string.select_HillfortImage.toString())
+    parent.startActivityForResult(chooser, id)
+}
 
 // helper function to display the image
 fun readImage(activity: Activity, resultCode: Int, data: Intent?): Bitmap? {
