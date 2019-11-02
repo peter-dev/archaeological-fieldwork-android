@@ -7,10 +7,12 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
+import org.wit.hillfort.models.Location
 import org.wit.placemark.helpers.readImage
 import org.wit.placemark.helpers.readImageFromPath
 import org.wit.placemark.helpers.showImagePicker
@@ -18,6 +20,7 @@ import org.wit.placemark.helpers.showImagePicker
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
     val IMAGE_REQUEST = 1
+    val LOCATION_REQUEST = 2
     var hillfort = HillfortModel()
     lateinit var app: MainApp
 
@@ -71,6 +74,17 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
         btn_addImage.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST)
         }
+
+        // register a listener to a button click event (set location)
+        btn_setLocation.setOnClickListener {
+            val location = Location(52.245696, -7.139102, 15f)
+            if (hillfort.zoom != 0f) {
+                location.lat =  hillfort.lat
+                location.lng = hillfort.lng
+                location.zoom = hillfort.zoom
+            }
+            startActivityForResult(intentFor<MapsActivity>().putExtra("location", location), LOCATION_REQUEST)
+        }
     }
 
     // load the menu resource (inflate the menu)
@@ -105,6 +119,15 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
                     img_hillfortImage.setImageBitmap(readImage(this, resultCode, data))
                     // when an image is loaded, change the label (change image)
                     btn_addImage.setText(R.string.button_changeImage)
+                }
+            }
+            LOCATION_REQUEST -> {
+                if (data != null) {
+                    // when a result is returned, recover the location
+                    val location = data.extras?.getParcelable<Location>("location")!!
+                    hillfort.lat = location.lat
+                    hillfort.lng = location.lng
+                    hillfort.zoom = location.zoom
                 }
             }
 
