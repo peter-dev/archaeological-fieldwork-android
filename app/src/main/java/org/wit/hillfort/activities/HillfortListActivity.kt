@@ -18,6 +18,16 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
 
     lateinit var app: MainApp
 
+    private fun loadHillforts() {
+        showHillforts(app.hillforts.findAll())
+    }
+
+    private fun showHillforts(placemarks: List<HillfortModel>) {
+        recyclerView.adapter = HillfortAdapter(placemarks, this)
+        // instruct the recyclerView's adapter that the model has been updated
+        recyclerView.adapter?.notifyDataSetChanged()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hillfort_list)
@@ -30,7 +40,7 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
         // include the RecyclerView + Adapter
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = HillfortAdapter(app.hillforts.findAll(), this)
+        loadHillforts()
     }
 
     // load the menu resource
@@ -56,8 +66,7 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
 
     // this lifecycle event is to be triggered when an activity we have started finishes
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        // instruct the recyclerView's adapter that the model has been updated
-        recyclerView.adapter?.notifyDataSetChanged()
+        loadHillforts()
         super.onActivityResult(requestCode, resultCode, data)
     }
 
