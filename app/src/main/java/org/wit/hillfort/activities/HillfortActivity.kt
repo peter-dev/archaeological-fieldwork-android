@@ -27,6 +27,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
     private fun goToLoginActivity() {
         // go to LoginActivity and dismiss the current view
+        app.currentUser = null
         startActivity<LoginActivity>()
         finish()
     }

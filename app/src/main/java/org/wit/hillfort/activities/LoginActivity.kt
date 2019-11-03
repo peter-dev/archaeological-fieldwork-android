@@ -18,6 +18,7 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
 
     private fun goToHillfortListActivity() {
         // go to HillfortListActivity and dismiss the current view
+        app.currentUser = user
         startActivity<HillfortListActivity>()
         finish()
     }
@@ -47,6 +48,7 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
                 if (userFound != null) {
                     // email address and password match
                     if (userFound.comparePassword(password)) {
+                        user = UserModel(email, password)
                         toast(R.string.toast_UserLoggedIn)
                         goToHillfortListActivity()
                     } else {
@@ -55,7 +57,7 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
                         txt_password.setText("")
                     }
                 } else {
-                    // user not found
+                    // user not found, add new user
                     user = UserModel(email, password)
                     app.users.create(user)
                     toast(R.string.toast_UserSingedUp)

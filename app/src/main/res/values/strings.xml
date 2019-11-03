@@ -4,12 +4,15 @@
     <string name="hint_hillfortDescription">Hillfort Description (max 100 characters)</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
+    <string name="label_userDetails">Registered Email and Password</string>
     <string name="menu_addHillfort">Add</string>
     <string name="menu_deleteHillfort">Delete</string>
     <string name="menu_cancelHillfort">Cancel</string>
     <string name="menu_logoutUser">Logout</string>
+    <string name="menu_settingsUserr">Settings</string>
     <string name="toolbar_hilforts">Registered Hillforts</string>
     <string name="toolbar_login">Welcome to Hillforts</string>
+    <string name="toolbar_settings">User Settings</string>
     <string name="button_addHillfort">Add Hillfort</string>
     <string name="button_editHillfort">Save Hillfort</string>
     <string name="button_addImage">Add Image</string>

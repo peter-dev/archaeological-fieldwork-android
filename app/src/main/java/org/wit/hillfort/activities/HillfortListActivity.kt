@@ -13,10 +13,12 @@ import org.jetbrains.anko.startActivityForResult
 import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
+import org.wit.hillfort.models.UserModel
 
 
 class HillfortListActivity : AppCompatActivity(), HillfortListener {
 
+    lateinit var user: UserModel
     lateinit var app: MainApp
 
     private fun loadHillforts() {
@@ -31,6 +33,7 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
 
     private fun goToLoginActivity() {
         // go to LoginActivity and dismiss the current view
+        app.currentUser = null
         startActivity<LoginActivity>()
         finish()
     }
@@ -43,6 +46,9 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
         setSupportActionBar(toolbar_listHillfort)
 
         app = application as MainApp
+
+        // retrieve user details
+        user = app.currentUser!!
 
         // include the RecyclerView + Adapter
         val layoutManager = LinearLayoutManager(this)
@@ -61,6 +67,8 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
         when (item?.itemId) {
             // if the event is item_add, it starts the HillfortActivity
             R.id.item_add -> startActivityForResult<HillfortActivity>(0)
+            // if the event is item_settings, it starts the SettingsActivity
+            R.id.item_settings -> startActivity<SettingsActivity>("user_details" to user)
             // if the event is item_logout, it should go to LoginActivity and dismiss the current view
             R.id.item_logout -> goToLoginActivity()
         }
