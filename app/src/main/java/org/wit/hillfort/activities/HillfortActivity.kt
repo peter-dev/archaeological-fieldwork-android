@@ -23,6 +23,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     val IMAGE_REQUEST = 1
     val LOCATION_REQUEST = 2
     var hillfort = HillfortModel()
+    var editMode = false
     lateinit var app: MainApp
 
     private fun goToLoginActivity() {
@@ -41,8 +42,6 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         app = application as MainApp
-
-        var editMode = false
 
         // retrieve the hillfort, and place its field into the view controls
         if (intent.hasExtra("hillfort_edit")) {
@@ -98,6 +97,8 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     // load the menu resource (inflate the menu)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_hillfort, menu)
+        // check "edit" flag when inflating the menu, and display delete only if we are in edit mode
+        if (editMode && menu != null) menu.getItem(0).setVisible(true)
         return super.onCreateOptionsMenu(menu)
     }
 
